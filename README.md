@@ -1,40 +1,63 @@
-# In this project you will define a simple command-line Ruby application that implements a simple Set Calculator. Sets must be implemented as Binary Search Trees (BST). This means that a set is really a BST. Here are the
-key features of the project:
-# 1. You must maintain up to 3 sets denoted by X, Y and Z. Each of the 3 sets must be printed in ascending order
-using an in-order traversal of the corresponding BST.
-# 2. All sets hold exclusively numerical values. No duplicate elements are allowed under any circumstances.
-# 3. You must implement simple set operations such as union, intersection, deep copying and element insertion
-using the BSTs.
-# 4. You are not required to keep the BSTs balanced or to delete elements from a set.
-# 5. Your program executes a continuous command loop according to the command list below.
-Recall that every node n in a BST has two children, subject to the property that the left child holds a value less
-than n’s value, and the right child holds a value greater than n’s value. In-order traversal recursively explores nodes
-in this order, starting from the root: (1) the left subtree of a node n, (2) node n, and (3) the right subtree of n.
-Your submission will be graded according to the following criteria: (1) compliance with this specification, (2)
-the presence of code comments, and (3) conciseness (e.g., avoiding definition of unnecessary data structures).
-When your project is started, all 3 sets are initially empty. Subsequently, the project will run a command loop
-implementing the commands below. Make sure to output the contents of sets X, Y and Z on the console after each
-command is executed.
-X values — This command takes a comma-separated list of numeric arguments denoted by values. Now sets
-X is initialized to the values specified on the command line. The previous content of X is lost.
-Y values — This command is similar to command X above, except that it resets the content of set Y.
-Z values — This command is similar to command X above, except that it resets the content of set Z.
-a i — Numeric argument i is inserted in an appropriate location in set X. The other two sets are not modified.
-Of course, insertion must preserve the BST properties of set X.
-r — The content of the 3 sets is rotated. Set Y takes the content of X; set Z takes the content of Y; and set X
-takes the previous content of Z. The BSTs are not modified or copied in this operation.
-s — The contents of sets X and Y are switched. The BSTs are not modified or copied in this operation.
-u — This command takes the union of sets X and Y. The result set is stored as X.
-i — This command takes the intersection of sets X and Y. The result set is stored as X.
-c — Set X is recursively deep copied into set Y. The previous content of Y is lost. After this command is
-executed, sets X and Y may not share any data structures.
-l aString — This command takes a string argument defining a one-argument lambda experssion. This lambda
-is applied to every element of set X. The result of each lambda execution is output on your console. Set X is
-not modified. You may assume that the syntax of the lambda in the string is correct.
-q — This command quits your project.
+# Set Calculator
 
-Hints. Use method eval() to evaluate a string. For instance the following code creates a lambda from a string
-and evaluates the lambda, returning 30:
+This Ruby command-line application implements a simple Set Calculator with sets represented as Binary Search Trees (BSTs). The key features include maintaining up to three sets (X, Y, and Z), performing set operations, and ensuring that all sets hold exclusively numerical values without duplicates.
+
+## Project Overview
+
+1. **Set Initialization:**
+   - `X values`: Initialize set X with a comma-separated list of numeric values. The previous content of X is replaced.
+
+   - `Y values`: Similar to `X values`, but for set Y.
+
+   - `Z values`: Similar to `X values`, but for set Z.
+
+2. **Element Insertion:**
+   - `a i`: Insert a numeric value i into set X at an appropriate location while preserving the BST properties. Sets Y and Z remain unchanged.
+
+3. **Rotation and Switching:**
+   - `r`: Rotate the contents of sets X, Y, and Z. Set Y takes the content of X, set Z takes the content of Y, and set X takes the previous content of Z. BSTs are not modified or copied.
+
+   - `s`: Switch the contents of sets X and Y. BSTs are not modified or copied.
+
+4. **Set Operations:**
+   - `u`: Take the union of sets X and Y, storing the result in X.
+
+   - `i`: Take the intersection of sets X and Y, storing the result in X.
+
+5. **Deep Copy and Lambda Evaluation:**
+   - `c`: Recursively deep copy set X into set Y, replacing the previous content of Y.
+
+   - `l aString`: Apply a one-argument lambda expression, defined by a string, to every element of set X. Output the result of each lambda execution on the console. Set X is not modified.
+
+6. **Quit:**
+   - `q`: Quit the project.
+
+## Execution and Output
+
+- After each command execution, the contents of sets X, Y, and Z are displayed on the console.
+
+## Evaluation Criteria
+
+Your project will be evaluated based on the following criteria:
+
+1. **Compliance with Specification:**
+   - Implement the specified features according to the given requirements.
+
+2. **Code Comments:**
+   - Include meaningful code comments to enhance readability and understanding.
+
+3. **Conciseness:**
+   - Avoid unnecessary data structure definitions and maintain code conciseness.
+
+## Additional Hints
+
+- Use the `eval()` method to evaluate string representations of lambda expressions.
+
+Example:
+```ruby
 aString = "-> {a, b = 10, 20 ; c = a + b ;}"
 aBlock = eval aString
-aBlock.call
+aBlock.call  # This returns 30
+```
+
+Feel free to explore and extend the functionality of the Set Calculator as needed.
